@@ -1,30 +1,11 @@
 'use strict';
-/*    {
-      year: '2023',
-        month: 'jul',
-      complete_year:false,
-      day_name_short:false,
-    }*/
-/*
-* function monthInfo
-*   @param: shortDayName: true(default)
-* function yearlyInfo
-*   @param: shortDayName: true(default)
-* function setYear
-* function setMonth
-* function calcAge
-* function createRange
-* */
-class Time {
+module.exports = class Time {
   #__MONTHS__=[{name:"January",short:"jan",index:0},{name:"February",short:"feb",index:1},{name:"March",short:"mar",index:2},{name:"April",short:"apr",index:3},{name:"May",short:"may",index:4},{name:"June",short:"jun",index:5},{name:"July",short:"jul",index:6},{name:"August",short:"aug",index:7},{name:"September",short:"sep",index:8},{name:"October",short:"oct",index:9},{name:"November",short:"nov",index:10},{name:"December",short:"dec",index:11}]
   constructor(time=new Date()) {
     this.date = new Date(time);
     if(isNaN(this.date.getTime())) throw new Error('Invalid Time::Aborting time construction');
     this.Year = this.date.getFullYear();
     this.Month = this.#__MONTHS__.find(item=>item.index===this.date.getMonth()).short;
-  }
-  inf(){
-    console.log(this.Month)
   }
   __processTime(conf){
     const __DAYS__={0:{name:"Sunday",short:"Sun",date_index:0},1:{name:"Monday",short:"Mon",date_index:1},2:{name:"Tuesday",short:"Tues",date_index:2},3:{name:"Wednesday",short:"Wed",date_index:3},4:{name:"Thursday",short:"Thur",date_index:4},5:{name:"Friday",short:"Fri",date_index:0},6:{name:"Saturday",short:"Sat",date_index:6}};
@@ -105,7 +86,7 @@ class Time {
   }
   setMonth(month){
     if(typeof month === 'string'){
-      const _month = this.#__MONTHS__.find(mon=>mon.short===month.toLowerCase() || mon.name===month.toLowerCase());
+      const _month = this.#__MONTHS__.find(mon=>mon.short===month.toLowerCase() || mon.name.toLowerCase()===month.toLowerCase());
       if(!_month) throw new Error(`Invalid Month ${month}`)
       this.date.setMonth(_month.index);
       this.Month=_month.short;
@@ -136,5 +117,4 @@ class Time {
   }
 
 }
-const time = new Time();
-console.log(time.setMonth(14).monthInfo())
+

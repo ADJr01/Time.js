@@ -99,6 +99,12 @@ module.exports = class Time {
     }
     throw new Error('Invalid Month Error')
   }
+  setYear(year){
+    if(isNaN(year) || Number(year)<1000) throw new Error('Incompatible year.');
+    this.date.setFullYear(year);
+    this.Month = this.#__MONTHS__.find(item=>item.index===this.date.getMonth()).short;
+    this.Year = this.date.getFullYear();
+  }
   monthInfo(shortDayName=true){
     return this.__processTime({
       year: this.Year,

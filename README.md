@@ -1,7 +1,7 @@
 
 # Time.Js🕒
 
-Time.Js is a versatile JavaScript Project that simplifies date and calendar related operation in a web project.
+Time.Js is a versatile JavaScript Project that simplifies date and calendar related operation in a web application.
 
 ## Core Functionalities:
 Create an Instance:
